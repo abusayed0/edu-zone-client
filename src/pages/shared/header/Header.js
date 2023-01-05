@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {  NavLink, useNavigate } from 'react-router-dom';
 import Logo from "../../../assets/images/logo/Logo.png";
+import {MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 const Header = () => {
     const loginNavigate = useNavigate();
     const regNavigate = useNavigate();
@@ -17,8 +18,9 @@ const Header = () => {
                     <NavLink to={"/courses"}>Courses</NavLink>
                     <NavLink  to={"/blog"}>Blog</NavLink>
                     <NavLink to={"/faq"}>FAQ</NavLink>
-                   
-                    <input onChange={()=>setIsDarkMode(!isDarkMode)}  type="checkbox" className="toggle" checked={isDarkMode}/>
+                    {
+                        isDarkMode?<MdOutlineLightMode onClick={()=>setIsDarkMode(!isDarkMode)} className="text-3xl"></MdOutlineLightMode>:<MdDarkMode onClick={()=>setIsDarkMode(!isDarkMode)}  className="text-3xl"></MdDarkMode>
+                    }
                     <button onClick={() => loginNavigate("/login")} className="px-2 py-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-md text-white">Login</button>
                     <button onClick={() => regNavigate("/register")} className="px-2 py-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-md text-white">Register</button>
                    
