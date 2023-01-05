@@ -18,6 +18,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:"/courses",
+                loader:async()=>fetch("http://localhost:5000/courses"),
                 element:<Courses></Courses>,
             },
             {
