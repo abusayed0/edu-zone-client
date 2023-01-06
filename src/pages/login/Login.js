@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
 
 const Login = () => {
+
+    const {emailPassLogin}=useContext(AuthContext);
+
+    const hangleLogin=(event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password)
+        emailPassLogin(email,password)
+        .then(result=>{
+            const user =result.user;
+            console.log(user)
+        })
+        .catch(error=>console.error(`error ${error}`))
+    }
+
     return (
         <div className="md:w-7/12 bg-violet-200 mx-auto mt-16 rounded-md p-8">
-            <form className="flex flex-col gap-2 ">
+            <form onSubmit={hangleLogin} className="flex flex-col gap-2 ">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="text" placeholder="Enter your email" className="input input-bordered" />
+                    <input type="email" name="email"  placeholder="Enter your email" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="text" placeholder="Enter your password" className="input input-bordered" />
+                    <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" />
 
                 </div>
                 <div className="form-control mt-6">

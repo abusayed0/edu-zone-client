@@ -6,7 +6,7 @@ const Register = () => {
 
     const {createUserWithEmailPass,updateUserInfo}=useContext(AuthContext);
 
-    const handleSubmit=(event)=>{
+    const handleRegister=(event)=>{
        event.preventDefault();
        const form = event.target;
        const fullName = form.name.value;
@@ -16,7 +16,8 @@ const Register = () => {
        console.log(fullName,photoUrl,email,password)
 
        createUserWithEmailPass(email,password)
-       .then(user=>{
+       .then(result=>{
+        const user = result.user;
         console.log(user)
         handleUpdateUserInfo(fullName,photoUrl)
         .then(()=>console.log("profile updated"))
@@ -32,7 +33,7 @@ const Register = () => {
 
     return (
         <div className="md:w-7/12 bg-violet-200 mx-auto mt-16 rounded-md p-8">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-2 ">
+            <form onSubmit={handleRegister} className="flex flex-col gap-2 ">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Full name</span>

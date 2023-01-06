@@ -2,10 +2,16 @@ import React, { useContext, useState } from 'react';
 import {  NavLink, useNavigate } from 'react-router-dom';
 import Logo from "../../../assets/images/logo/Logo.png";
 import {MdDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { AuthContext } from '../../../contexts/auth-provider/AuthProvider';
+
 const Header = () => {
+    
+    const {user}=useContext(AuthContext);
+
     const loginNavigate = useNavigate();
     const regNavigate = useNavigate();
     const [isDarkMode, setIsDarkMode] = useState(false);
+
     return (
         <div className="bg-indigo-50 shadow-xl px-2 md:px-0">
             <div className="flex flex-col xl:flex-row md:justify-between md:items-center py-6 md:w-11/12 md:mx-auto gap-3 xl:gap-0 ">
@@ -18,6 +24,9 @@ const Header = () => {
                     <NavLink to={"/courses"}>Courses</NavLink>
                     <NavLink  to={"/blog"}>Blog</NavLink>
                     <NavLink to={"/faq"}>FAQ</NavLink>
+                    {
+                        user&&<p>{user.email}</p>
+                    }
                     {
                         isDarkMode?<MdOutlineLightMode onClick={()=>setIsDarkMode(!isDarkMode)} className="text-3xl cursor-pointer"></MdOutlineLightMode>:<MdDarkMode onClick={()=>setIsDarkMode(!isDarkMode)}  className="text-3xl cursor-pointer"></MdDarkMode>
                     }
