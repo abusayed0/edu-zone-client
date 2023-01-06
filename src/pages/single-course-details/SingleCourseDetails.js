@@ -1,11 +1,12 @@
 import React from 'react';
 import { MdCircle, MdOutlineFileDownload } from 'react-icons/md';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const SingleCourseDetails = () => {
     const course = useLoaderData();
-    const { advantages, category, courseId, courseTropic, description, duration, imgUrl, price, title, totalPurchase } = course;
+    const { advantages, courseId, courseTropic, description, duration, imgUrl, price, title, totalPurchase } = course;
     console.log(course)
+    const navigate =useNavigate();
     return (
         <div className="mt-16 md:w-10/12 md:mx-auto">
 
@@ -37,7 +38,7 @@ const SingleCourseDetails = () => {
 
                 </div>
                 <div className="card-actions justify-end pb-8 pr-8">
-                    <button className="bg-primary text-white text-xl p-2 rounded-md hover:bg-primary-focus">Get Premium Access</button>
+                    <button onClick={()=>navigate(`/checkout/${courseId}`)} className="bg-primary text-white text-xl p-2 rounded-md hover:bg-primary-focus">Get Premium Access</button>
                 </div>
             </div >
         </div >
