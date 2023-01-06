@@ -5,6 +5,7 @@ import SingleCourseSummary from '../others/single-course-summary/SingleCourseSum
 
 const Courses = () => {
     const courses=useLoaderData();
+    
 
     return (
         <div className="mt-16 md:w-10/12 md:mx-auto">

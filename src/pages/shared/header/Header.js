@@ -19,7 +19,7 @@ const Header = () => {
                     <NavLink  to={"/blog"}>Blog</NavLink>
                     <NavLink to={"/faq"}>FAQ</NavLink>
                     {
-                        isDarkMode?<MdOutlineLightMode onClick={()=>setIsDarkMode(!isDarkMode)} className="text-3xl"></MdOutlineLightMode>:<MdDarkMode onClick={()=>setIsDarkMode(!isDarkMode)}  className="text-3xl"></MdDarkMode>
+                        isDarkMode?<MdOutlineLightMode onClick={()=>setIsDarkMode(!isDarkMode)} className="text-3xl cursor-pointer"></MdOutlineLightMode>:<MdDarkMode onClick={()=>setIsDarkMode(!isDarkMode)}  className="text-3xl cursor-pointer"></MdDarkMode>
                     }
                     <button onClick={() => loginNavigate("/login")} className="px-2 py-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-md text-white">Login</button>
                     <button onClick={() => regNavigate("/register")} className="px-2 py-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-md text-white">Register</button>

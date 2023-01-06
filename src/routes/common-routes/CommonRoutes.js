@@ -6,6 +6,7 @@ import Faq from "../../pages/faq/Faq";
 import Home from "../../pages/home/Home";
 import Login from "../../pages/login/Login";
 import Register from "../../pages/resgister/Register";
+import SingleCourseDetails from "../../pages/single-course-details/SingleCourseDetails";
 
 export const router=createBrowserRouter([
     {
@@ -36,6 +37,11 @@ export const router=createBrowserRouter([
             {
                 path:"/register",
                 element:<Register></Register>
+            },
+            {
+                path:"/courses/:id",
+                loader:async({params})=>fetch(`http://localhost:5000/courses/${params.id}`),
+                element:<SingleCourseDetails></SingleCourseDetails>
             }
         ]
     }

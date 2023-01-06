@@ -1,17 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CoursesLeftNav = ({courses}) => {
+    const navigate = useNavigate();
     return (
-        <div className="bg-base-100 shadow-xl rounded-2xl p-4 flex gap-3 flex-col">
-                        {
-                            courses.map(course => <button
-                                key={course.courseId}
-                                className="text-xl bg-base-200 border py-2 rounded-md w-full hover:bg-base-300"
-                            >
-                                {course.courseTropic}
-                            </button>)
-                        }
-                    </div>
+        <div className="bg-base-100 border shadow-xl rounded-2xl p-4 flex gap-3 flex-col">
+            {
+                courses.map(course=><button 
+                    key={course.courseId}
+                    onClick={()=>navigate(`/courses/${course.courseId}`)}
+                    className="bg-base-200 hover:bg-base-300 text-xl py-2 rounded-md ">{course.courseTropic}</button>)
+            }
+            
+        </div>
     );
 };
 
