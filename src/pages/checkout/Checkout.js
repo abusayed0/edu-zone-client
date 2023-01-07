@@ -13,7 +13,7 @@ const Checkout = () => {
             <h3>Course name : <span className="font-bold text-xl">{title}</span></h3>
             <h4>Price : <span className="font-semibold">{price}</span> tk</h4>
            {
-            user?.displayName &&  <p>Student name : <span className="font-semibold">{user.displayName}</span></p>
+            user?.displayName &&  <p>User name : <span className="font-semibold">{user.displayName}</span></p>
            }
         </div>
     );

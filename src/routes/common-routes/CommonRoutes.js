@@ -9,6 +9,7 @@ import Login from "../../pages/login/Login";
 import Register from "../../pages/resgister/Register";
 import SingleCourseDetails from "../../pages/single-course-details/SingleCourseDetails";
 import PrivateRoute from "../private-route/PrivateRoute";
+import Error from "../../pages/error/Error";
 
 export const router=createBrowserRouter([
     {
@@ -51,5 +52,9 @@ export const router=createBrowserRouter([
                 element:<PrivateRoute><Checkout></Checkout></PrivateRoute>
             }
         ]
+    },
+    {
+        path:"*",
+        element:<Error></Error>
     }
 ])
