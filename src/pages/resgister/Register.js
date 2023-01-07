@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
 const Register = () => {
+
+    const [error,setError]=useState("");
 
     const { createUserWithEmailPass, updateUserInfo } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,7 +25,10 @@ const Register = () => {
                 handleUpdateUserInfo(fullName, photoUrl)
                 navigate("/")
             })
-            .catch(error => console.error(`error ${error}`))
+            .catch(error => {
+                setError(error.message)
+                console.error(`error ${error}`)
+            })
     }
 
     const handleUpdateUserInfo = (name, photoUrl) => {
@@ -41,27 +46,29 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Full name</span>
                     </label>
-                    <input type="text" name="name" placeholder="Enter your full name" className="input input-bordered" />
+                    <input type="text" name="name" required placeholder="Enter your full name" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Photo url</span>
                     </label>
-                    <input type="text" name="photo" placeholder="Enter your photo url" className="input input-bordered" />
+                    <input type="text" name="photo" required placeholder="Enter your photo url" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" name="email" placeholder="Enter your email" className="input input-bordered" />
+                    <input type="email" name="email" required placeholder="Enter your email" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" />
-
+                    <input type="password" name="password" required placeholder="Enter your password" className="input input-bordered" />
                 </div>
+                {
+                    error.length > 0 && <p className="px-1 py-2 text-red-400 ">{error}</p>
+                }
                 <div className="form-control mt-6">
                     <button className="bg-primary text-white text-xl py-2 rounded-md hover:bg-primary-focus">Register</button>
                 </div>
