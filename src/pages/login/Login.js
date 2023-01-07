@@ -1,14 +1,15 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
+import AuthProvider, { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
 
 const Login = () => {
 
-    const {emailPassLogin}=useContext(AuthContext);
+    const {emailPassLogin,googleSignIn}=useContext(AuthContext);
 
-    const hangleLogin=(event)=>{
+    const handleEmailPassLogin=(event)=>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -21,10 +22,21 @@ const Login = () => {
         })
         .catch(error=>console.error(`error ${error}`))
     }
+    
+    const googleProvider= new GoogleAuthProvider();
+
+    const handleGoogleLogin=()=>{
+        googleSignIn(googleProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(`user ${JSON.stringify(user)}`)
+        })
+        .catch(error=>console.error(`error ${error}`))
+    }
 
     return (
         <div className="md:w-7/12 bg-violet-200 mx-auto mt-16 rounded-md p-8">
-            <form onSubmit={hangleLogin} className="flex flex-col gap-2 ">
+            <form onSubmit={handleEmailPassLogin} className="flex flex-col gap-2 ">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
@@ -46,7 +58,7 @@ const Login = () => {
                 Or log in with
             </h3>
             <div className="mt-5 flex flex-col md:flex-row gap-4">
-                    <button className="bg-[#ea4335] text-white py-2 rounded-md w-full flex gap-1 justify-center items-center text-xl"><FaGoogle></FaGoogle>Google</button>
+                    <button onClick={handleGoogleLogin} className="bg-[#ea4335] text-white py-2 rounded-md w-full flex gap-1 justify-center items-center text-xl"><FaGoogle></FaGoogle>Google</button>
                 
                     <button className="bg-[#333] text-white py-2 rounded-md  w-full flex gap-1 justify-center items-center text-xl"><FaGithub></FaGithub>Github</button>
                 
