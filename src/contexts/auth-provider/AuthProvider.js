@@ -27,6 +27,10 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth,provider)
     }
 
+    const gihubSignIn=provider=>{
+        return signInWithPopup(auth,provider)
+    }
+
     useEffect(()=>{
         const unSubscribe =onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser);
@@ -34,7 +38,7 @@ const AuthProvider = ({children}) => {
         return ()=>unSubscribe();
     },[])
 
-    const authInfo={createUserWithEmailPass,updateUserInfo,emailPassLogin,user,logOut,googleSignIn};
+    const authInfo={createUserWithEmailPass,updateUserInfo,emailPassLogin,user,logOut,googleSignIn,gihubSignIn};
 
     return (
         <AuthContext.Provider value={authInfo}>

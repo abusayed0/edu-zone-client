@@ -41,7 +41,7 @@ const Header = () => {
                             <>
                                 {
                                     user.photoURL ?
-                                        <img src={user.photoURL} className="h-7 w-7 rounded-full" title={user.displayName && user.displayName} alt="" />
+                                        <img src={user.photoURL} className="h-7 w-7 rounded-full cursor-pointer" title={user.displayName && user.displayName} alt="" />
                                         :
                                         <MdAccountCircle className="text-3xl"></MdAccountCircle>
                                 }

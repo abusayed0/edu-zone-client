@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import AuthProvider, { AuthContext } from '../../contexts/auth-provider/AuthProv
 
 const Login = () => {
 
-    const {emailPassLogin,googleSignIn}=useContext(AuthContext);
+    const {emailPassLogin,googleSignIn,gihubSignIn}=useContext(AuthContext);
 
     const handleEmailPassLogin=(event)=>{
         event.preventDefault();
@@ -24,12 +24,21 @@ const Login = () => {
     }
     
     const googleProvider= new GoogleAuthProvider();
-
     const handleGoogleLogin=()=>{
         googleSignIn(googleProvider)
         .then(result=>{
             const user = result.user;
             console.log(`user ${JSON.stringify(user)}`)
+        })
+        .catch(error=>console.error(`error ${error}`))
+    }
+
+    const githubProvider = new GithubAuthProvider();
+    const handleGihubSignIn=()=>{
+        gihubSignIn(githubProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(`user ${user}`)
         })
         .catch(error=>console.error(`error ${error}`))
     }
@@ -60,7 +69,7 @@ const Login = () => {
             <div className="mt-5 flex flex-col md:flex-row gap-4">
                     <button onClick={handleGoogleLogin} className="bg-[#ea4335] text-white py-2 rounded-md w-full flex gap-1 justify-center items-center text-xl"><FaGoogle></FaGoogle>Google</button>
                 
-                    <button className="bg-[#333] text-white py-2 rounded-md  w-full flex gap-1 justify-center items-center text-xl"><FaGithub></FaGithub>Github</button>
+                    <button onClick={handleGihubSignIn} className="bg-[#333] text-white py-2 rounded-md  w-full flex gap-1 justify-center items-center text-xl"><FaGithub></FaGithub>Github</button>
                 
             </div>
             <hr />
