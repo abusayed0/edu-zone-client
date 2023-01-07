@@ -4,35 +4,34 @@ import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
 const Register = () => {
 
-    const {createUserWithEmailPass,updateUserInfo}=useContext(AuthContext);
+    const { createUserWithEmailPass, updateUserInfo } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleRegister=(event)=>{
-       event.preventDefault();
-       const form = event.target;
-       const fullName = form.name.value;
-       const photoUrl = form.photo.value;
-       const email = form.email.value;
-       const password = form.password.value;
-       console.log(fullName,photoUrl,email,password)
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const fullName = form.name.value;
+        const photoUrl = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(fullName, photoUrl, email, password)
 
-       createUserWithEmailPass(email,password)
-       .then(result=>{
-        const user = result.user;
-        console.log(user)
-        handleUpdateUserInfo(fullName,photoUrl)
-        .then(()=>{
-            navigate("/")
-            console.log("profile updated")
-        })
-        .catch(error=>console.error(`error ${error}`))
-       })
-       .catch(error=>console.error(`error ${error}`))
+        createUserWithEmailPass(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                handleUpdateUserInfo(fullName, photoUrl)
+                navigate("/")
+            })
+            .catch(error => console.error(`error ${error}`))
     }
 
-    const handleUpdateUserInfo=(name,photoUrl)=>{
-       
-        return updateUserInfo(name,photoUrl)
+    const handleUpdateUserInfo = (name, photoUrl) => {
+        updateUserInfo(name, photoUrl)
+            .then(() => {
+                console.log("profile updated")
+            })
+            .catch(error => console.error(`error ${error}`))
     }
 
     return (

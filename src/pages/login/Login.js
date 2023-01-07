@@ -1,13 +1,17 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import AuthProvider, { AuthContext } from '../../contexts/auth-provider/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
 
 const Login = () => {
 
     const {emailPassLogin,googleSignIn,gihubSignIn}=useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const from =location.state?.from?.pathname || "/";
 
     const handleEmailPassLogin=(event)=>{
         event.preventDefault();
@@ -19,6 +23,7 @@ const Login = () => {
         .then(result=>{
             const user =result.user;
             console.log(user)
+            navigate(from,{replace:true})
         })
         .catch(error=>console.error(`error ${error}`))
     }
@@ -28,7 +33,8 @@ const Login = () => {
         googleSignIn(googleProvider)
         .then(result=>{
             const user = result.user;
-            console.log(`user ${JSON.stringify(user)}`)
+            navigate(from,{replace:true})
+            console.log(`user ${(user)}`)
         })
         .catch(error=>console.error(`error ${error}`))
     }
@@ -38,6 +44,7 @@ const Login = () => {
         gihubSignIn(githubProvider)
         .then(result=>{
             const user = result.user;
+            navigate(from,{replace:true})
             console.log(`user ${user}`)
         })
         .catch(error=>console.error(`error ${error}`))

@@ -29,7 +29,6 @@ const Header = () => {
                     <NavLink to={"/courses"}>Courses</NavLink>
                     <NavLink to={"/blog"}>Blog</NavLink>
                     <NavLink to={"/faq"}>FAQ</NavLink>
-
                     {
                         isDarkMode ? <MdOutlineLightMode onClick={() => setIsDarkMode(!isDarkMode)} className="text-3xl cursor-pointer"></MdOutlineLightMode> : <MdDarkMode onClick={() => setIsDarkMode(!isDarkMode)} className="text-3xl cursor-pointer"></MdDarkMode>
                     }

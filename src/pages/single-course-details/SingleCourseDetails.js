@@ -5,7 +5,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 const SingleCourseDetails = () => {
     const course = useLoaderData();
     const { advantages, courseId, courseTropic, description, duration, imgUrl, price, title, totalPurchase } = course;
-    console.log(course)
+    // console.log(course)
     const navigate =useNavigate();
     return (
         <div className="mt-16 md:w-10/12 md:mx-auto">
@@ -30,7 +30,10 @@ const SingleCourseDetails = () => {
                             <h3 className="text-xl font-bold">Advantages :</h3>
                             <ul className="list-disc list-inside">
                                 {
-                                    advantages.map(advantage => <li>{advantage}</li>)
+                                    advantages.map((advantage,index) => <li
+                                    key={index}
+                                    >
+                                    {advantage}</li>)
                                 }
                             </ul>
                         </div>
@@ -38,7 +41,7 @@ const SingleCourseDetails = () => {
 
                 </div>
                 <div className="card-actions justify-end pb-8 pr-8">
-                    <button onClick={()=>navigate(`/checkout/${courseId}`)} className="bg-primary text-white text-xl p-2 rounded-md hover:bg-primary-focus">Get Premium Access</button>
+                    <button onClick={()=>navigate(`/checkout/${courseId}`)} className="bg-primary text-white text-xl py-2 px-3 rounded-md hover:bg-primary-focus">Get Premium Access</button>
                 </div>
             </div >
         </div >
