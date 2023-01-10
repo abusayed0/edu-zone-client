@@ -60,7 +60,7 @@ const Login = () => {
     }
 
     return (
-        <div className="md:w-7/12 bg-violet-200 mx-auto mt-16 rounded-md p-8">
+        <div className="md:w-7/12 bg-violet-200 mx-2 md:mx-auto mt-16 rounded-md p-8">
             <form onSubmit={handleEmailPassLogin} className="flex flex-col gap-2 ">
                 <div className="form-control">
                     <label className="label">

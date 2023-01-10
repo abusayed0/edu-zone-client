@@ -10,7 +10,7 @@ const SingleCourseDetails = () => {
     return (
         <div className="mt-16 md:w-10/12 md:mx-auto">
 
-            <div className="card bg-base-100 shadow-xl border">
+            <div className="card bg-base-100 shadow-xl border mx-2 md:mx-0">
                 {/* card header  */}
                 <div className="p-8 flex justify-between">
                     <h2 className="text-2xl font-bold">{courseTropic}</h2>

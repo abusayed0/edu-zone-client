@@ -26,15 +26,14 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col  md:items-center md:flex-row gap-3 md:gap-8">
                     <NavLink to={"/"}>Home</NavLink>
-                    <NavLink to={"/courses"}>Courses</NavLink>
+                    <NavLink to={"/course"}>Course</NavLink>
                     <NavLink to={"/blog"}>Blog</NavLink>
                     <NavLink to={"/faq"}>FAQ</NavLink>
-                    {
-                        isDarkMode ? <MdOutlineLightMode onClick={() => setIsDarkMode(!isDarkMode)} className="text-3xl cursor-pointer"></MdOutlineLightMode> : <MdDarkMode onClick={() => setIsDarkMode(!isDarkMode)} className="text-3xl cursor-pointer"></MdDarkMode>
-                    }
-                    {
+                    {/* {
+                        isDarkMode ? <MdOutlineLightMode onClick={() => setIsDarkMode(!isDarkMode)} className="text-2xl cursor-pointer"></MdOutlineLightMode> : <MdDarkMode onClick={() => setIsDarkMode(!isDarkMode)} className="text-2xl cursor-pointer"></MdDarkMode>
+                    } */}
+                    <input onChange={() => setIsDarkMode(!isDarkMode)} type="checkbox" className="toggle toggle-md" checked={isDarkMode} />
 
-                    }
                     {
                         user?.uid ?
                             <>
