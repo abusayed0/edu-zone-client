@@ -17,7 +17,7 @@ const SingleCourseDetails = () => {
                     <MdOutlineFileDownload className="text-3xl cursor-pointer"></MdOutlineFileDownload>
                 </div>
                 <div>
-                    <figure><img src={imgUrl} alt="" className="w-full h-96" /></figure>
+                    <figure><img src={imgUrl} alt="teacher" className="w-full h-96" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{title}</h2>
                         <p>{description}</p>
@@ -41,7 +41,7 @@ const SingleCourseDetails = () => {
 
                 </div>
                 <div className="card-actions justify-end pb-8 pr-8">
-                    <button onClick={()=>navigate(`/checkout/${courseId}`)} className="bg-primary text-white text-xl py-2 px-3 rounded-md hover:bg-primary-focus">Get Premium Access</button>
+                    <button onClick={()=>navigate(`/checkout/${courseId}`)} className="bg-primary text-white text-xl py-2 px-4 rounded-md hover:bg-primary-focus">Buy Now</button>
                 </div>
             </div >
         </div >

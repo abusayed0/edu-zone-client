@@ -23,7 +23,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user)
                 handleUpdateUserInfo(fullName, photoUrl)
-                navigate("/")
+               
             })
             .catch(error => {
                 setError(error.message)
@@ -34,6 +34,7 @@ const Register = () => {
     const handleUpdateUserInfo = (name, photoUrl) => {
         updateUserInfo(name, photoUrl)
             .then(() => {
+                navigate("/")
                 console.log("profile updated")
             })
             .catch(error => console.error(`error ${error}`))

@@ -19,9 +19,9 @@ const Header = () => {
 
     return (
         <div className="bg-indigo-50 shadow-xl px-2 md:px-0">
-            <div className="flex flex-col xl:flex-row md:justify-between md:items-center py-6 md:w-11/12 md:mx-auto gap-3 xl:gap-0 ">
+            <div className="flex flex-col xl:flex-row xl:justify-between md:items-center py-6 md:w-11/12 md:mx-auto gap-3 xl:gap-0 ">
                 <div className="flex items-center gap-1">
-                    <img src={Logo} alt="" className="h-8 w-8" />
+                    <img src={Logo} alt="" className="h-7 w-7" />
                     <h3 className="text-2xl font-bold">Edu Zone</h3>
                 </div>
                 <div className="flex flex-col  md:items-center md:flex-row gap-3 md:gap-8">
