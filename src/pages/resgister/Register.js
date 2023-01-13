@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
 const Register = () => {
 
-    const [error,setError]=useState("");
+    const [error, setError] = useState("");
+    const [isVisible, setIsVisible] = useState(false);
 
     const { createUserWithEmailPass, updateUserInfo } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,7 +25,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user)
                 handleUpdateUserInfo(fullName, photoUrl)
-               
+
             })
             .catch(error => {
                 setError(error.message)
@@ -39,6 +41,10 @@ const Register = () => {
             })
             .catch(error => console.error(`error ${error}`))
     }
+
+    const handleShowPassword = () => {
+        setIsVisible(!isVisible)
+    };
 
     return (
         <div className="md:w-7/12 bg-violet-200 mx-2 md:mx-auto mt-16 rounded-md p-8">
@@ -61,11 +67,16 @@ const Register = () => {
                     </label>
                     <input type="email" name="email" required placeholder="Enter your email" className="input input-bordered" />
                 </div>
-                <div className="form-control">
+                <div className="form-control relative">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" name="password" required placeholder="Enter your password" className="input input-bordered" />
+                    <input type={isVisible ? "text" : "password"} name="password" required placeholder="Enter your password" className="input input-bordered" maxLength="30"/>
+                    <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-3">
+                        {
+                            isVisible ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
+                        }
+                    </div>
                 </div>
                 {
                     error.length > 0 && <p className="px-1 py-2 text-red-400 ">{error}</p>

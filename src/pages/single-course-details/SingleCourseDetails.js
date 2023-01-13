@@ -26,7 +26,7 @@ const SingleCourseDetails = () => {
                     
                 </div>
                 <div ref={pdfRef}>
-                    <figure><img src={imgUrl} alt="teacher" className="w-full h-96" /></figure>
+                    <figure><img src={imgUrl} alt="course-banner-img" className="w-full h-96" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{title}</h2>
                         <p>{description}</p>

@@ -7,7 +7,7 @@ const SingleCourseSummary = ({ course }) => {
     const {imgUrl,title,price,totalPurchase,courseId}=course;
     return (
         <div onClick={()=>navigate(`/course/${courseId}`)} className="card border border-gray-200 card-compact  bg-base-100 shadow-xl cursor-pointer hover:border-secondary-focus">
-            <figure><img src={imgUrl} alt="teacher" /></figure>
+            <figure><img src={imgUrl} alt="course-banner-img" /></figure>
             <div className="card-body">
             <h2 className="card-title">{title}</h2>
                 <p className="font-semibold">Price : {price} tk</p>
