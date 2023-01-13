@@ -9,7 +9,7 @@ const Checkout = () => {
     const{user}=useContext(AuthContext)
 
     return (
-        <div className="mt-16 md:w-10/12 md:mx-auto">
+        <div className="mt-16 mx-2 md:w-10/12 md:mx-auto">
             <h3>Course name : <span className="font-bold text-xl">{title}</span></h3>
             <h4>Price : <span className="font-semibold">{price}</span> tk</h4>
            {

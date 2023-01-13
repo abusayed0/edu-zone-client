@@ -78,7 +78,7 @@ const Login = () => {
                     error.length > 0 && <p className="text-red-400 px-1 py-2">{error}</p>
                 }
                 <div className="form-control mt-6">
-                    <button className="bg-primary text-white text-xl py-2 rounded-md hover:bg-primary-focus">Login</button>
+                    <button className="bg-secondary text-white text-xl py-2 rounded-md hover:bg-secondary-focus">Login</button>
                 </div>
             </form>
             <h3 className="text-center mt-8">

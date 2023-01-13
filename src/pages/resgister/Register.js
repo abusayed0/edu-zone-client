@@ -71,7 +71,7 @@ const Register = () => {
                     error.length > 0 && <p className="px-1 py-2 text-red-400 ">{error}</p>
                 }
                 <div className="form-control mt-6">
-                    <button className="bg-primary text-white text-xl py-2 rounded-md hover:bg-primary-focus">Register</button>
+                    <button className="bg-secondary text-white text-xl py-2 rounded-md hover:bg-secondary-focus">Register</button>
                 </div>
             </form>
             <p className="text-center mt-8 ">Already have an account? <Link to={"/login"} className="underline decoration-primary hover:decoration-2">log in</Link></p>
