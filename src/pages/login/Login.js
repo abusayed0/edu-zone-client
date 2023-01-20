@@ -1,6 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { FaEye, FaEyeSlash, FaGithub, FaGoogle, FaRegEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle, } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 
@@ -65,7 +65,7 @@ const Login = () => {
     };
 
     return (
-        <div className="md:w-7/12 bg-violet-200 mx-2 md:mx-auto mt-16 rounded-md p-8">
+        <div className="md:w-7/12 bg-violet-200 mx-2 md:mx-auto mt-16 rounded-md p-4 md:p-8">
             <form onSubmit={handleEmailPassLogin} className="flex flex-col gap-2 ">
                 <div className="form-control">
                     <label className="label">
@@ -77,8 +77,8 @@ const Login = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type={isVisible?"text":"password"} name="password" required placeholder="Enter your password" className="input input-bordered" maxLength="30"/>
-                   <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-3">
+                    <input type={isVisible?"text":"password"} name="password" required placeholder="Enter your password" className="input input-bordered pr-11"/>
+                   <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-4">
                    {
                         isVisible ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                     }

@@ -1,29 +1,32 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { MdCircle, MdOutlineFileDownload } from 'react-icons/md';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import Pdf from "react-to-pdf";
+import ReactToPdf from "react-to-pdf";
 
 
 const SingleCourseDetails = () => {
     const course = useLoaderData();
+    
     const { advantages, courseId, courseTropic, description, duration, imgUrl, price, title, totalPurchase } = course;
     // console.log(course)
     const navigate = useNavigate();
+
     const pdfRef = useRef();
-    
+
+   
     return (
         <div className="mt-16 md:w-10/12 md:mx-auto">
 
-            <div className="card bg-base-100 shadow-xl border mx-2 md:mx-0">
+            <div className="card bg-[#dfcece] shadow-xl border mx-2 md:mx-0">
                 {/* card header  */}
                 <div className="p-8 flex justify-between">
                     <h2 className="text-2xl font-bold">{courseTropic}</h2>
-                    <Pdf targetRef={pdfRef} filename="course-detail">
+                    <ReactToPdf targetRef={pdfRef} filename="course-detail" >
                         {({ toPdf }) => (
-                            <MdOutlineFileDownload onClick={toPdf}className="text-3xl cursor-pointer"></MdOutlineFileDownload>
+                            <MdOutlineFileDownload onClick={toPdf} className="text-3xl cursor-pointer"></MdOutlineFileDownload>
                         )}
-                    </Pdf>
-                    
+                    </ReactToPdf>
+
                 </div>
                 <div ref={pdfRef}>
                     <figure><img src={imgUrl} alt="course-banner-img" className="w-full h-96" /></figure>
@@ -49,7 +52,7 @@ const SingleCourseDetails = () => {
                     </div>
 
                 </div>
-               
+
                 <div className="card-actions justify-end pb-8 pr-8">
                     <button onClick={() => navigate(`/checkout/${courseId}`)} className="bg-secondary text-white text-xl py-2 px-5 rounded-md hover:bg-secondary-focus">Buy Now</button>
 

@@ -47,7 +47,7 @@ const Register = () => {
     };
 
     return (
-        <div className="md:w-7/12 bg-violet-200 mx-2 md:mx-auto mt-16 rounded-md p-8">
+        <div className="md:w-7/12 bg-violet-200 mx-2 md:mx-auto mt-16 rounded-md p-4 md:p-8">
             <form onSubmit={handleRegister} className="flex flex-col gap-2 ">
                 <div className="form-control">
                     <label className="label">
@@ -71,8 +71,8 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type={isVisible ? "text" : "password"} name="password" required placeholder="Enter your password" className="input input-bordered" maxLength="30"/>
-                    <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-3">
+                    <input type={isVisible ? "text" : "password"} name="password" required placeholder="Enter your password" className="input input-bordered pr-11"/>
+                    <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-4">
                         {
                             isVisible ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                         }
