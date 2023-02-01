@@ -4,7 +4,6 @@ import Blog from "../../pages/blog/Blog";
 import Checkout from "../../pages/checkout/Checkout";
 import Courses from "../../pages/courses/Courses";
 import Faq from "../../pages/faq/Faq";
-import Home from "../../pages/home/Home";
 import Login from "../../pages/login/Login";
 import Register from "../../pages/resgister/Register";
 import SingleCourseDetails from "../../pages/single-course-details/SingleCourseDetails";
@@ -18,11 +17,7 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Home></Home>
-            },
-            {
-                path:"/courses",
-                loader:()=>fetch("http://localhost:5000/courses"),
+                loader:()=>fetch("http://localhost:5000/"),
                 element:<Courses></Courses>,
             },
             {

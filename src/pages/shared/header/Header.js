@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from "../../../assets/images/logo/Logo.png";
-import { MdAccountCircle } from "react-icons/md";
+import { MdAccountCircle,MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { AuthContext } from '../../../contexts/auth-provider/AuthProvider';
 
 const Header = () => {
@@ -25,12 +25,14 @@ const Header = () => {
                     <h3 className="text-2xl font-bold">Edu Zone</h3>
                 </div>
                 <div className="flex flex-col  md:items-center md:flex-row gap-3 md:gap-8">
-                    <NavLink className={({ isActive }) => isActive ? "text-secondary-focus" : "hover:text-secondary-focus"} to={"/"}>Home</NavLink>
-                    <NavLink className={({ isActive }) => isActive ? "text-secondary-focus" : "hover:text-secondary-focus"} to={"/courses"}>Courses</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "text-secondary-focus" : "hover:text-secondary-focus"} to={"/"}>Courses</NavLink>
                     <NavLink className={({ isActive }) => isActive ? "text-secondary-focus" : "hover:text-secondary-focus"} to={"/blog"}>Blog</NavLink>
                     <NavLink className={({ isActive }) => isActive ? "text-secondary-focus" : "hover:text-secondary-focus"} to={"/faq"}>Faq</NavLink>
 
-                    <input onChange={() => setIsDarkMode(!isDarkMode)} type="checkbox" className="toggle toggle-md" checked={isDarkMode} />
+                  
+                    {
+                        isDarkMode ?<MdOutlineLightMode onClick={()=>setIsDarkMode(!isDarkMode)}className="w-8 h-8 cursor-pointer "></MdOutlineLightMode>:<MdOutlineDarkMode onClick={()=>setIsDarkMode(!isDarkMode)} className="w-8 h-8 cursor-pointer"></MdOutlineDarkMode >
+                    }
 
                     {
                         user?.uid ?
