@@ -8,7 +8,11 @@ import { AuthContext } from '../../contexts/auth-provider/AuthProvider';
 const Login = () => {
 
     const [error, setError] = useState("");
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
+    const [passLength,setPassLength]= useState(0);
+
+    console.log(passLength)
+
 
     const { emailPassLogin, googleSignIn, gihubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -77,8 +81,8 @@ const Login = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type={isVisible?"text":"password"} name="password" required placeholder="Enter your password" className="input input-bordered pr-11"/>
-                   <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-4">
+                    <input type={isVisible?"text":"password"} name="password" required placeholder="Enter your password" className="input input-bordered pr-11" onChange={(event)=>setPassLength(event.target.value.length)}/>
+                   <div onClick={handleShowPassword} className={`text-2xl cursor-pointer absolute bottom-3 right-4 ${passLength ? "block" : "hidden"}`}>
                    {
                         isVisible ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                     }
@@ -88,7 +92,7 @@ const Login = () => {
                     error.length > 0 && <p className="text-red-400 px-1 py-2">{error}</p>
                 }
                 <div className="form-control mt-6">
-                    <button className="bg-secondary text-white text-xl py-2 rounded-md hover:bg-secondary-focus">Login</button>
+                    <button type="submit" className="bg-secondary text-white text-xl py-2 rounded-md hover:bg-secondary-focus">Login</button>
                 </div>
             </form>
             <h3 className="text-center mt-8">
@@ -107,7 +111,7 @@ const Login = () => {
 
             </div>
 
-            <p className="text-center mt-8 ">New to Edu Zone? <Link to={"/register"} className="underline decoration-primary hover:decoration-2">Create an account</Link></p>
+            <p className="text-center mt-8 ">New to Edu Zone? <Link to={"/register"} className="underline decoration-primary hover:decoration-2 hover:decoration-secondary-focus">Create an account</Link></p>
 
         </div>
 

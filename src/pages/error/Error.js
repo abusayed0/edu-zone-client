@@ -7,7 +7,7 @@ const Error = () => {
             <div className="absolute top-0 w-full h-full flex flex-col justify-center items-center p-5 gap-3">
                 <h2 className="text-4xl font-bold">Oops! Page Not Found.</h2>
                 <p className="text-2xl">The page you were looking for doesn't exist.</p>
-                <Link className="underline decoration-primary decoration-2 hover:decoration-secondary-focus" to={"/"}><span className="text-2xl ">back to home</span></Link>
+                <Link className="underline decoration-primary hover:decoration-secondary-focus hover:decoration-2" to={"/"}><span className="text-2xl ">back to courses</span></Link>
             </div>
         </div>
     );

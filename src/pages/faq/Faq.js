@@ -2,7 +2,7 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div className="md:w-10/12 md:mx-auto mt-16">
+        <div className="md:w-10/12 md:mx-auto mt-16 px-2 md:px-0">
 
             <div className="grid grid-cols-1 gap-8 ">
                 <div className="collapse">

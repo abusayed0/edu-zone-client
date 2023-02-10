@@ -7,6 +7,8 @@ const Register = () => {
 
     const [error, setError] = useState("");
     const [isVisible, setIsVisible] = useState(false);
+    const [passLength, setPassLength] = useState(0);
+
 
     const { createUserWithEmailPass, updateUserInfo } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -71,23 +73,25 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type={isVisible ? "text" : "password"} name="password" required placeholder="Enter your password" className="input input-bordered pr-11"/>
-                    <div onClick={handleShowPassword} className="text-2xl cursor-pointer absolute bottom-3 right-4">
+                    <input type={isVisible ? "text" : "password"} name="password" required placeholder="Enter your password" className="input input-bordered pr-11" onChange={(event) => {setPassLength(event.target.value.length) }} />
+
+                    <div onClick={handleShowPassword} className={`text-2xl cursor-pointer absolute bottom-3 right-4 ${passLength ? "block" : "hidden"}`}>
                         {
                             isVisible ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                         }
                     </div>
+
                 </div>
                 {
                     error.length > 0 && <p className="px-1 py-2 text-red-400 ">{error}</p>
                 }
                 <div className="form-control mt-6">
-                    <button className="bg-secondary text-white text-xl py-2 rounded-md hover:bg-secondary-focus">Register</button>
+                    <button type="submit" className="bg-secondary text-white text-xl py-2 rounded-md hover:bg-secondary-focus">Register</button>
                 </div>
-            </form>
-            <p className="text-center mt-8 ">Already have an account? <Link to={"/login"} className="underline decoration-primary hover:decoration-2">log in</Link></p>
+            </form >
+            <p className="text-center mt-8 ">Already have an account? <Link to={"/login"} className="underline decoration-primary hover:decoration-2 hover:decoration-secondary-focus">log in</Link></p>
 
-        </div>
+        </div >
     );
 };
 
